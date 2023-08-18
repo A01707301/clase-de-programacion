@@ -18,9 +18,11 @@ Si selecciona fuerza
 	
 
     Si selecciona 1. Segunda Ley de Newton
+    pon el valor de la masa, la aceleración o la fuerza
     			F=ma
     
     	Si selecciona 2. aceleración
+    Pon el valor de la aceleraci
     		a= Vf-Vo/tf-to
     		a= Vf-Vo/t
     		xf= xo + vot + 1/2 at2
@@ -32,7 +34,8 @@ Si selecciona fuerza
     	Si selecciona 4. fuerza centrípeta 
     		F=mat
     		F=v2/R
-		
+    		
+	si no Regresar al menu principal
 		
 Si selecciona movimiento 
 pregunta= input("¿Sobre cuál tema de movimiento quieres saber? Escribe 1 para Movimiento rectilíneo uniforme, 2 para Movimiento parabólico, 3 para Movimiento de caída libre, 4 para Movimiento circular")
@@ -71,7 +74,8 @@ pregunta= input("¿Sobre cuál tema de movimiento quieres saber? Escribe 1 para 
 	    	θf=θ0+wt
 	    	w=w0 + at
 	    	t=w - w0/a
-	    	
+
+si no Regresar al menu principal
 
 Dependiendo de la formula seleccionada, se ingresa los datos y obtendrá el resultado
 	
