@@ -1,0 +1,3 @@
+Mi proyecto será realizar un caja registradora, en donde se le pregunta al usuario su numero de cuenta y se desplegará el saldo disponible,
+después podra retirar o depositar cierta cantidad de dinero, haciendo que la caja registradora sume o reste esa cantidad y actualice el
+saldo disponible del usuario.
