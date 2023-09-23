@@ -14,11 +14,11 @@ def calcular_fuerza(masa, aceleracion):
     fuerza = masa * aceleracion 
     return fuerza
 
-def calcular_masa(aceleracion, fuerza):
+def calcular_masa(fuerza, aceleracion):
     masa = fuerza / aceleracion
     return masa
 
-def calcular_aceleracion(masa, fuerza):
+def calcular_aceleracion(fuerza, masa):
     aceleracion = fuerza / masa
     return aceleracion
 
@@ -37,6 +37,14 @@ def calcular_suma_nc(suma_nc1, suma_nc2):
 def calcular_resta_nc(resta_nc1, resta_nc2):
     resta_nc = resta_nc1 - resta_nc2
     return resta_nc
+
+def suma_vectores(a1, a2, b1, b2):
+    suma_v = (a1 + b1), (a2 + b2)
+    return suma_v
+
+def resta_vectores(a1, a2, b1, b2):
+    resta_v = (a1 - b1), (a2 - b2)
+    return resta_v
 
 def calcular_km_a_m(kilometro):
     km_a_m = kilometro * 1000
@@ -69,7 +77,7 @@ print("3. Conversión de unidades")
 
 calculadora = int(input("Selecciona una opción (1/2/3): "))
 
-if calculadora == 1:
+while calculadora == 1:
     print("Formulario de física")
     print("1. Fuerzas")
     print("2. Movimiento")
@@ -85,15 +93,19 @@ if calculadora == 1:
         formulario = int(input("Selecciona una opción (1/2/3/4): "))
 
         if formulario == 1: 
-            Newton = input("F=ma")
+            fuerza = calcular_fuerza(float(input("Masa: ")), float(input("Aceleración: ")))
+            print(f"Fuerza: {fuerza} N")
         elif formulario == 2: 
-            aceleracion = input(" \n a= Vf-Vo/tf-to \n a= Vf-Vo/t \n xf= xo + vot + 1/2 at2 ")
+            aceleracion = calcular_aceleracion(float(input("Fuerza: ")), float(input("Masa: ")))
+            print(f"Aceleración: {aceleracion} m/s²")
         elif formulario == 3: 
-            friccion = input("\n Fr= μN \n Fr= μmg")
+            fuerza_normal = calcular_fuerza_normal(float(input("Coeficiente de fricción estática: ")), float(input("Fuerza de fricción: ")))
+            print(f"Fuerza Normal: {fuerza_normal} N")
         elif formulario == 4:
-            centripeta = input("\n F=mat \n F=v2/R")
+            fuerza_centripeta = calcular_fuerza(float(input("Masa: ")), float(input("Aceleración centrípeta: ")))
+            print(f"Fuerza Centrípeta: {fuerza_centripeta} N")
         else: 
-            print("No insertaste un dato correcto, regresa al menú principal")
+            print("No insertaste una opción válida")
 
     elif opcion_uno == 2:
         print("1. Movimiento rectilíneo uniforme")
@@ -104,27 +116,32 @@ if calculadora == 1:
         opcion_seis = int(input("Selecciona una opción (1/2/3/4): "))
 
         if opcion_seis == 1:
-            rectilineo = input ("\n x=vt \n x=x0+vt \n v= x1-x2/t1-t2 \n v=v0+at \n x= x0+v0t+1/2 at2")
+            velocidad = calcular_velocidad(float(input("Distancia: ")), float(input("Tiempo: ")))
+            print(f"Velocidad: {velocidad} m/s")
         elif opcion_seis == 2:
-            parabolico = input ("\n vx=v0cosα \n vy=v0sina \n x(t)=x0+vxt \n y=y0 + vyt - 1/2gt2 \n y= vy0 -gt = v0 sin a -gt")
-        elif opcion_seis ==3:
-            caida_libre = input("y= y0 + v0t - 1/2 gt2 \n v=v0 - gt \n y= h - 1/2 gt2")
+            tiempo_vuelo = calcular_tiempo(float(input("Altura máxima: ")), float(input("Aceleración debido a la gravedad: ")))
+            print(f"Tiempo de vuelo: {tiempo_vuelo} s")
+        elif opcion_seis == 3:
+            tiempo_caida = calcular_tiempo(float(input("Altura desde la que cae: ")), float(input("Aceleración debido a la gravedad: ")))
+            print(f"Tiempo de caída: {tiempo_caida} s")
         elif opcion_seis == 4:
-            circular = input ("∣v1∣=∣v2∣ \n w= θ2-θ1/t2-t1 \n w=dθ/dt \n w=2π/T \n v=wR \n ac= v2/R \n ac=w2R \n θf=θ0+wt \n w=w0 + at \n t=w - w0/a")
+            velocidad = calcular_velocidad(float(input("Radio: ")), float(input("Aceleración centrípeta: ")))
+            print(f"Velocidad: {velocidad} m/s")
         else: 
-            print("No insertaste un dato correcto, regresa al menú principal")
+            print("No insertaste una opción válida")
 
     else:
-        print("No insertaste un dato correcto, regresa al menú principal")
+        print("No insertaste una opción válida")
 
-elif calculadora == 2: 
+while calculadora == 2: 
     print("Calculadora de Física")
     print("1. Distancia, Velocidad o Tiempo")
     print("2. Fuerza, Masa, Aceleración")
     print("3. Fuerza normal o fuerza de fricción")
-    print("4. Notación científica Suma/Resta")
+    print("4. Notación científica Suma/Resta con exponentes iguales")
+    print("5. Suma y resta de vectores")
 
-    opciones = int(input("Selecciona una opción (1/2/3/4): "))
+    opciones = int(input("Selecciona una opción (1/2/3/4/5): "))
     if opciones == 1:
         print("1. Calcular velocidad")
         print("2. Calcular distancia")
@@ -151,7 +168,7 @@ elif calculadora == 2:
             print(f"El tiempo es {tiempo} s ")
 
         else: 
-            print("No insertaste un dato correcto, regresa al menú principal")
+            print("No insertaste una opción válida")
 
     elif opciones == 2:
         print("1. Calcular Fuerza")
@@ -162,46 +179,46 @@ elif calculadora == 2:
 
         if opcion_tres == 1:
             masa = float(input("Insertar la masa: "))
-            aceleracion = float(input("Insertar la aceleracion: "))
+            aceleracion = float(input("Insertar la aceleración: "))
             fuerza = calcular_fuerza(masa, aceleracion)
-            print(f"la fuerza es {fuerza} N")
+            print(f"La fuerza es {fuerza} N")
 
         elif opcion_tres == 2:
             fuerza = float(input("Insertar la fuerza: "))
-            aceleracion = float(input("Insertar la aceleracion: "))
-            masa = calcular_masa(aceleracion, fuerza)
-            print(f"La masa es: {masa} g")
+            aceleracion = float(input("Insertar la aceleración: "))
+            masa = calcular_masa(fuerza, aceleración)
+            print(f"La masa es: {masa} kg")
 
         elif opcion_tres == 3:
             fuerza = float(input("Insertar la fuerza: "))
             masa = float(input("Insertar la masa: "))
-            aceleracion = calcular_aceleracion(masa, fuerza)
-            print(f"La aceleración es: {aceleracion} m/s**2")
+            aceleracion = calcular_aceleración(fuerza, masa)
+            print(f"La aceleración es: {aceleracion} m/s²")
 
         else: 
-            print("No insertaste un dato correcto, regresa al menú principal")
+            print("No insertaste una opción válida")
 
     elif opciones == 3:
         print("1. Calcular la fuerza normal")
-        print("2. Fuerza de fricción")
+        print("2. Calcular la fuerza de fricción")
 
         opcion_cuatro = int(input("Selecciona una opción (1/2): "))
 
         if opcion_cuatro == 1:
             fuerza_friccion = float(input("Insertar la fuerza de fricción: "))
-            coeficiente_friccion_estatica = float(input("Insertar el coeficiente de fricción estatica: "))
+            coeficiente_friccion_estatica = float(input("Insertar el coeficiente de fricción estática: "))
             fuerza_normal = calcular_fuerza_normal(coeficiente_friccion_estatica, fuerza_friccion)
             print(f"La fuerza normal es: {fuerza_normal} N")
 
         elif opcion_cuatro == 2:
             fuerza_normal = float(input("Insertar la fuerza normal: "))
-            coeficiente_friccion_estatica = float(input("Insertar el coeficiente de fricción estatica: "))
-            fuerza_friccion = calcular_fuerza_friccion(coeficiente_friccion_estatica, fuerza_normal)
-            print(f"La fuerza de fricción es: {fuerza_friccion} N ")
+            coeficiente_friccion_estatica = float(input("Insertar el coeficiente de fricción estática: "))
+            fuerza_fricción = calcular_fuerza_friccion(coeficiente_friccion_estatica, fuerza_normal)
+            print(f"La fuerza de fricción es: {fuerza_fricción} N")
         
     elif opciones == 4: 
-        print("1. Suma de notación científica")
-        print("2. Resta de notación científica")
+        print("1. Suma de notación científica con exponentes iguales")
+        print("2. Resta de notación científica con exponentes iguales")
 
         opcion_siete = int(input("Selecciona una opción (1/2): "))
         if opcion_siete == 1:
@@ -212,67 +229,87 @@ elif calculadora == 2:
         
             if suma_nc_ex == suma2_nc_ex:
                 suma_nc = calcular_suma_nc(suma_nc1, suma_nc2)
-                print(f"La suma es: {suma_nc} x10 {suma_nc_ex}")
+                print(f"La suma es: {suma_nc} x10^{suma_nc_ex}")
+               
+        elif opcion_siete ==2:
+                resta_nc1 = float(input("Insertar el primer número entero: "))
+                resta_nc_ex = float(input("Insertar el primer exponente: "))
+                resta_nc2 = float(input("Insertar el segundo número entero: "))
+                resta2_nc_ex = float(input("Insertar el segundo exponente: "))
+        
+                if resta_nc_ex == resta2_nc_ex:
+                    resta_nc = calcular_resta_nc(resta_nc1, resta_nc2)
+                    print(f"La resta es: {resta_nc} x10^{resta_nc_ex}")
 
-            if (suma_nc_ex < suma2_nc_ex) or (suma_nc_ex > suma2_nc_ex):
-                # Aquí falta manejar los casos en los que los exponentes son diferentes.
-        
-        if opcion_siete ==2:
-            resta_nc = float(input("Insertar el primer número entero: "))
-            resta_nc_ex = float(input("Insertar el primer exponente: "))
-            resta2_nc = float(input("Insertar el segundo número entero: "))
-            resta2_nc_ex = float(input("Insertar el segundo exponente: "))
-        
-            if resta_nc_ex == resta2_nc_ex:
-                resta_nc = calcular_resta_nc(resta_nc, resta2_nc)
-                print(f"La resta es: {resta_nc} x10 {resta_nc_ex}")
-                # Aquí falta manejar los casos en los que los exponentes son diferentes.
-                
+    elif opciones == 5:
+        print ("1. Suma de vectores")
+        print("2. Resta de vectores")
+
+        opcion_ocho = int(input("Selecciona una opción (1/2): "))
+
+        if opcion_ocho == 1:
+            a1 = float(input("Insertar el primer número x1: "))
+            a2 = float(input("Insertar el primer número x2: "))
+            b1 = float(input("Insertar el primer número y1: "))
+            b2 = float(input("Insertar el primer número y2: "))
+
+            suma_v = suma_vectores(a1, a2, b1, b2)
+            print(f"La suma de vectores es: {suma_v}")
+
+        if opcion_ocho == 2:
+            a1 = float(input("Insertar el primer número x1: "))
+            a2 = float(input("Insertar el primer número x2: "))
+            b1 = float(input("Insertar el primer número y1: "))
+            b2 = float(input("Insertar el primer número y2: "))
+
+            resta_v = resta_vectores(a1, a2, b1, b2)
+            print(f"La resta de vectores es: {resta_v}")
+
     else: 
-        print("No insertaste un dato correcto, regresa al menú principal")
+        print("No insertaste una opción válida")
 
-elif calculadora == 3:
-    print("1. Convertir kilometros a metros")
-    print("2. Convertir metros a kilometros")
+while calculadora == 3:
+    print("1. Convertir kilómetros a metros")
+    print("2. Convertir metros a kilómetros")
     print("3. Convertir kilogramos a gramos")
     print("4. Convertir gramos a kilogramos")
-    print("5. Convertir minuto a segundo")
-    print("6. Convertir segundos a minuto")
+    print("5. Convertir minutos a segundos")
+    print("6. Convertir segundos a minutos")
 
     opcion_cinco = int(input("Selecciona una opción (1/2/3/4/5/6): "))
 
     if opcion_cinco == 1:
-        kilometro = float(input("Insertar los kilometros: "))
-        kilometro = calcular_km_a_m(kilometro)
-        print(f"La conversión a metros es {kilometro} m")
+        kilometro = float(input("Insertar los kilómetros: "))
+        metro = calcular_km_a_m(kilometro)
+        print(f"La conversión a metros es {metro} m")
 
     elif opcion_cinco == 2:
         metro = float(input("Insertar los metros: "))
-        metro = calcular_m_a_km(metro)
-        print(f"La conversión a kilometros es {metro} km")
+        kilometro = calcular_m_a_km(metro)
+        print(f"La conversión a kilómetros es {kilometro} km")
     
     elif opcion_cinco == 3:
         kilogramo = float(input("Insertar los kilogramos: "))
-        kilogramo = calcular_kg_a_g(kilogramo)
-        print(f"La conversión a gramos es {kilogramo} g")
+        gramo = calcular_kg_a_g(kilogramo)
+        print(f"La conversión a gramos es {gramo} g")
 
     elif opcion_cinco == 4:
         gramo = float(input("Insertar los gramos: "))
-        gramo = calcular_g_a_kg(gramo)
-        print(f"La conversión a kilogramo es {gramo} kg")
+        kilogramo = calcular_g_a_kg(gramo)
+        print(f"La conversión a kilogramos es {kilogramo} kg")
     
     elif opcion_cinco == 5:
         minuto = float(input("Insertar los minutos: "))
-        minuto = calcular_m_a_s(minuto)
-        print(f"La conversion a segundos es {minuto} s")
+        segundo = calcular_m_a_s(minuto)
+        print(f"La conversión a segundos es {segundo} s")
 
     elif opcion_cinco == 6:
         segundo = float(input("Insertar los segundos: "))
-        segundo = calcular_s_a_m(segundo)
-        print(f"La conversión a minutos es {segundo} m")        
+        minuto = calcular_s_a_m(segundo)
+        print(f"La conversión a minutos es {minuto} min")        
 
     else: 
-        print("No insertaste un dato correcto, regresa al menú principal")
+        print("No insertaste una opción válida")
 
-elif calculadora >= 4: 
-    print("No insertaste un dato correcto, regresa al menú principal")
+else: 
+    print("No insertaste una opción válida")
